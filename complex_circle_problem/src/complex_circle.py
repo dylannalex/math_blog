@@ -28,3 +28,11 @@ class ComplexCircle:
         n, theta0 = self.n, self.theta0
         angle = n * (math.pi + theta0) + math.pi
         return cmath.rect(1, angle)
+
+
+class Theta:
+    def __init__(self, theta0: float):
+        self.theta0 = theta0
+
+    def __call__(self, n: int) -> float:
+        return self.theta0 + (n - 1) * (self.theta0 + math.pi)
