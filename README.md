@@ -12,3 +12,14 @@ Consider a circle of radius one centered at the origin of a complex plane. Given
 **Note:** let $\theta_0$ be the angle between the *x-axis* to the last complex number $z_{n}$. This means that, when $\theta_0 = 0$, $z_{n} = 1 + 0i$.
 
 [_See more_.](./complex_circle_problem/complex_circle.ipynb)
+
+
+## The Triangle Problem
+
+<p align="center">
+  <img width="400" height="400" src="triangle_problem/img/statement.png">
+</p>
+
+Find the value of $x$ given $\theta \in (0, \pi)$ and $a \in \R^{+}$
+
+[_See more_.](./triangle_problem/triangle_problem.md)
