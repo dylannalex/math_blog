@@ -20,6 +20,6 @@ Consider a circle of radius one centered at the origin of a complex plane. Given
   <img width="400" height="400" src="triangle_problem/img/statement.png">
 </p>
 
-Find the value of $x$ given $\theta \in (0, \pi)$ and $a \in \R^{+}$
+Find the value of $x$ given $\theta \in (0, \pi)$ and $a \in \mathbb{R}^{+}$
 
 [_See more_.](./triangle_problem/triangle_problem.md)
