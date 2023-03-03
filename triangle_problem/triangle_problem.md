@@ -6,7 +6,7 @@
   <img width="400" height="400" src="img/statement.png">
 </p>
 
-Find the value of $x$ given $\theta \in (0, \pi)$ and $a \in \mathbb{R}^{+}$
+Find the value of $x$ given $\theta \in (0, \frac{\pi}{2}]$ and $a \in \mathbb{R}^{+}$
 
 ## Solution
 
