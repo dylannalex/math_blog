@@ -81,9 +81,9 @@ $$
 \begin{align*}
 x &= 2 b \sin(\frac{\theta}{2})\\
 &= 2 \sqrt{2} a \frac{\sin(\frac{\theta}{2})}{\sin(\frac{\theta}{2}) + \cos(\frac{\theta}{2})}\\
-&= 2 \sqrt{2} a (\frac{\sin(\frac{\theta}{2}) + \cos(\frac{\theta}{2})}{\sin(\frac{\theta}{2})})^{-1}\\
-&= 2 \sqrt{2} a (1 + \frac{\cos(\frac{\theta}{2})}{\sin(\frac{\theta}{2})})^{-1}\\
-&= 2 \sqrt{2} a \frac{1}{1 + \cot(\frac{\theta}{2})}\\
-\therefore x &= \frac{2 \sqrt{2} a}{1 + \cot(\frac{\theta}{2})}
+&= \sqrt{8} a (\frac{\sin(\frac{\theta}{2}) + \cos(\frac{\theta}{2})}{\sin(\frac{\theta}{2})})^{-1}\\
+&= \sqrt{8} a (1 + \frac{\cos(\frac{\theta}{2})}{\sin(\frac{\theta}{2})})^{-1}\\
+&= \sqrt{8} a \frac{1}{1 + \cot(\frac{\theta}{2})}\\
+\therefore x &= \frac{\sqrt{8} a}{1 + \cot(\frac{\theta}{2})}
 \end{align*}
 $$
