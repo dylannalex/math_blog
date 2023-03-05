@@ -17,7 +17,7 @@ Consider a circle of radius one centered at the origin of a complex plane. Given
 ## The Triangle Problem
 
 <p align="center">
-  <img width="400" height="400" src="triangle_problem/img/statement.png">
+  <img src="triangle_problem/img/statement.gif">
 </p>
 
 Find the value of $x$ given $\theta \in (0, \frac{\pi}{2}]$ and $a \in \mathbb{R}^{+}$

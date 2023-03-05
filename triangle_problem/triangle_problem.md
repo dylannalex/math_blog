@@ -3,7 +3,7 @@
 ## Statement
 
 <p align="center">
-  <img width="400" height="400" src="img/statement.png">
+  <img src="img/statement.gif">
 </p>
 
 Find the value of $x$ given $\theta \in (0, \frac{\pi}{2}]$ and $a \in \mathbb{R}^{+}$
