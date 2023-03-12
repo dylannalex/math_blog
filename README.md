@@ -7,9 +7,11 @@ _By Dylan Tintenfich._
 
 ## The Complex Circle Problem
 
-Consider a circle of radius one centered at the origin of a complex plane. Given an integer $n$ and an angle $\theta_0$, how can we determine the product of the $n$ complex numbers $z_1, \dots, z_{n}$ that represent the $n$ equal parts into which the circle is divided, considering all possible rotations of these parts by angle $\theta_0$?
+Consider a circle of radius one centered at the origin of a complex plane. Given an $n \in \mathbb{N}$ and $\theta_0 \in \mathbb{R}$, find the product of the $n$ complex numbers $z_1, \dots, z_{n}$ that represent the $n$ equal parts into which the circle is divided, considering all possible rotations of these parts by $\theta_0$, the angle between the *x-axis* to the last complex number $z_{n}$ (i.e., $z_{n} = \cos\theta_0 + i \sin\theta_0$).
 
-**Note:** let $\theta_0$ be the angle between the *x-axis* to the last complex number $z_{n}$. This means that, when $\theta_0 = 0$, $z_{n} = 1 + 0i$.
+<p align="center">
+  <img src="complex_circle_problem/img/example.png">
+</p>
 
 [_See more_.](./complex_circle_problem/complex_circle.ipynb)
 
