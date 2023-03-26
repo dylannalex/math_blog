@@ -1,7 +1,6 @@
 import random as _random
 import math as _math
 
-
 Tree = list[int]
 Node = int
 Nodes = list[Node]
@@ -34,15 +33,6 @@ def check_winner(nodes: Nodes) -> bool:
     return True
 
 
-def probability(height: int, k: int):
-    numerator = 0
-    i_start = _math.ceil(_math.log2(k))
-    for i in range(i_start, height + 1):
-        numerator += _math.perm(2**i, k)
-    denominator = _math.perm(2 ** (height + 1) - 1, k)
-    return numerator / denominator
-
-
 def simulation(height: int, k: int, iterations: int = 1_000_000) -> float:
     binary_tree = tree(height)
     wins = 0
@@ -50,16 +40,3 @@ def simulation(height: int, k: int, iterations: int = 1_000_000) -> float:
         if check_winner(lottery(binary_tree, k)):
             wins += 1
     return wins / iterations
-
-
-def main():
-    h, k = 3, 4
-    # Monte Carlo Simulation
-    iterations = 5_000_000
-    print(f"Monte Carlo Simulation: {simulation(h, k, iterations)}")
-    # Analytic
-    print(f"Analytic Formula {probability(h, k)}")
-
-
-if __name__ == "__main__":
-    main()

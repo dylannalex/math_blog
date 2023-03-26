@@ -3,7 +3,7 @@ from matplotlib.axes import Axes
 from celluloid import Camera
 from collections import namedtuple
 
-from . import monte_carlo
+from .. import montecarlo
 
 
 _EDGE_COLOR = "#767676"
@@ -19,7 +19,7 @@ Edge = tuple[Position, Position]
 Level = namedtuple("Level", ["y", "x_list"])
 
 
-def find_pairs(list_: list[int]) -> list[tuple[int, int]]:
+def _find_pairs(list_: list[int]) -> list[tuple[int, int]]:
     pairs = []
     for i in range(0, len(list_), 2):
         pairs.append((list_[i], list_[i + 1]))
@@ -35,7 +35,7 @@ def tree(h: int) -> tuple[list[Level], list[Edge]]:
     last_nodes.remove(0)
     levels.append(Level(h, last_nodes))
     for y in range(h - 1, -1, -1):
-        pairs = find_pairs(last_nodes)
+        pairs = _find_pairs(last_nodes)
         x_list = []
         for pair in pairs:
             x_value = (pair[0] + pair[1]) / 2
@@ -60,25 +60,25 @@ def _configure_plot(ax: Axes, h: int):
     # TODO: add legends without exponentially slow down the code.
 
 
-def plot_node(ax: Axes, x: int, h: int, color: str, fill: bool, size: float = 0.1):
+def _plot_node(ax: Axes, x: int, h: int, color: str, fill: bool, size: float = 0.1):
     ax.add_patch(plt.Circle((x, h * -1), size, color=color, fill=fill))
 
 
-def plot_edge(ax: Axes, edge: Edge):
+def _plot_edge(ax: Axes, edge: Edge):
     x_list = (edge[0][0], edge[1][0])
     y_list = (-edge[0][1], -edge[1][1])
     ax.plot(x_list, y_list, color=_EDGE_COLOR, alpha=0.8)
 
 
-def find_node_pos(levels: list[Level], node_number: int) -> Position:
-    node_level = monte_carlo.node_level(node_number)
+def _find_node_pos(levels: list[Level], node_number: int) -> Position:
+    node_level = montecarlo.node_level(node_number)
     for level in levels:
         if level.y == node_level:
             x_index = node_number - 2**node_level
             return (level.x_list[x_index], level.y)
 
 
-def plot_tree(
+def _plot_tree(
     ax: Axes,
     levels: list[Level],
     edges: list[Edge],
@@ -86,17 +86,17 @@ def plot_tree(
 ):
     # Plot edges
     for edge in edges:
-        plot_edge(ax, edge)
+        _plot_edge(ax, edge)
 
     # Plot nodes
     for level in levels:
         for x in level.x_list:
             if (x, level.y) in nodes_to_ignore:
                 continue
-            plot_node(ax, x, level.y, _NODE_COLOR, True, _NODE_SIZE)
+            _plot_node(ax, x, level.y, _NODE_COLOR, True, _NODE_SIZE)
 
 
-def lottery_animation(
+def _lottery_animation(
     ax: Axes,
     camera: Camera,
     levels: list[Level],
@@ -105,11 +105,13 @@ def lottery_animation(
     lottery_nodes: list[int],
     lottery_animation_frames: int,
 ):
-    chosen_nodes = [find_node_pos(levels, node_number) for node_number in lottery_nodes]
+    chosen_nodes = [
+        _find_node_pos(levels, node_number) for node_number in lottery_nodes
+    ]
     for _ in range(lottery_animation_frames):
         for node in chosen_nodes:
-            plot_tree(ax, levels, edges, chosen_nodes)
-            plot_node(
+            _plot_tree(ax, levels, edges, chosen_nodes)
+            _plot_node(
                 ax,
                 x=node[0],
                 h=node[1],
@@ -154,11 +156,11 @@ def create_animation(
     frames_per_lottery = round(simulation_iterations / total_lottery_animations)
 
     # Monte Carlo Simulation
-    binary_tree = monte_carlo.tree(h)
+    binary_tree = montecarlo.tree(h)
     wins = 0
     for i in range(simulation_iterations):
-        lottery_nodes = monte_carlo.lottery(binary_tree, k)
-        has_win = monte_carlo.check_winner(lottery_nodes)
+        lottery_nodes = montecarlo.lottery(binary_tree, k)
+        has_win = montecarlo.check_winner(lottery_nodes)
         if has_win:
             wins += 1
 
@@ -167,7 +169,7 @@ def create_animation(
             continue
 
         color = _CORRECT_NODE_COLOR if has_win else _INCORRECT_NODE_COLOR
-        lottery_animation(
+        _lottery_animation(
             ax,
             camera,
             levels,
