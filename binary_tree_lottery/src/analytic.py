@@ -1,4 +1,5 @@
 import math as _math
+from decimal import Decimal as _Decimal
 
 
 def f(h: int, k: int):
@@ -7,4 +8,4 @@ def f(h: int, k: int):
     for i in range(i_start, h + 1):
         numerator += _math.perm(2**i, k)
     denominator = _math.perm(2 ** (h + 1) - 1, k)
-    return numerator / denominator
+    return _Decimal(numerator) / _Decimal(denominator)
