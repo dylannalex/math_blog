@@ -4,6 +4,18 @@ A repository for sharing my own math explanations, problems and more.
 
 _By Dylan Tintenfich._
 
+## The Binary Tree Lottery Problem
+
+The Binary Tree Lottery is a game where $k$ different nodes are randomly selected from a perfect binary tree of height $h$. You win the lottery if the $k$ selected nodes belongs to the same level of the tree.
+
+<p align="center">
+  <img src="binary_tree_lottery/img/animation1.gif">
+</p>
+
+The problem consists in finding the probability of winning the binary tree lottery as a function of $h$ and $k$.
+
+[_See more_.](./binary_tree_lottery/binary_tree_lottery.ipynb)
+
 
 ## The Complex Circle Problem
 
