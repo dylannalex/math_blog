@@ -5,6 +5,8 @@ Tree = list[int]
 Node = int
 Nodes = list[Node]
 Level = int
+Simulation = dict[int, float]
+IterationList = list[int]
 
 
 def tree(height: int) -> Tree:
@@ -33,10 +35,34 @@ def check_winner(nodes: Nodes) -> bool:
     return True
 
 
-def simulation(height: int, k: int, iterations: int = 1_000_000) -> float:
-    binary_tree = tree(height)
+def montecarlo_simulation(h: int, k: int, iteration_list: IterationList) -> Simulation:
+    """Monte Carlo simulation of the Binary Tree \
+    Lottery.
+
+    Parameters
+    ----------
+    h : int
+        Height of the tree.
+    k : int
+        Number of nodes selected in each round.
+    iteration_list : list[int]
+        List of positive integers containing the \
+        iterations to be stored in the simulation. 
+
+    Returns
+    -------
+    Simulation
+        A dictionary where the keys represent the \
+        iteration number and the values represent \
+        the estimated probability of winning the \
+        binary lottery game. 
+    """
+    binary_tree = tree(h)
     wins = 0
-    for _ in range(iterations):
+    simulation: Simulation = {}
+    for iteration in range(1, max(iteration_list) + 1):
         if check_winner(lottery(binary_tree, k)):
             wins += 1
-    return wins / iterations
+        if iteration in iteration_list:
+            simulation[iteration] = wins / iteration
+    return simulation
