@@ -2,6 +2,11 @@ import math as _math
 from decimal import Decimal as _Decimal
 
 
+def error(analytic_result: _Decimal, estimated_result: float) -> float:
+    analytic_result = float(analytic_result)
+    return 100 * (analytic_result - estimated_result) / analytic_result
+
+
 def f(h: int, k: int):
     numerator = 0
     i_start = _math.ceil(_math.log2(k))
