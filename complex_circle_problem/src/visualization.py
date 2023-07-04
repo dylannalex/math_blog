@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import math
 import cmath
-
+from IPython.display import display, Markdown
 from matplotlib.patches import Arc
 from matplotlib.axes import Axes
+from matplotlib.lines import Line2D
 from . import complex_circle
 
 
@@ -11,9 +12,19 @@ _SUBPLOTS_PER_COL = 2
 _FIGURE_SIZE = (10, 10)
 
 
-def _configure_plot(axes: Axes, n: int, theta0: float):
+def print_markdown(*args: str) -> None:
+    for text in args:
+        display(Markdown(text))
+
+
+def _configure_plot(axes: Axes, n: int, theta0: float, show_result: bool):
     limit = 1 + 0.1
     axes.set_aspect("equal", adjustable="box")
+    if show_result:
+        axes.legend(
+            [Line2D([0], [0], color="blue", lw=4, label="circle")],
+            ["result"],
+        )
     plt.axes(axes)
     plt.title(f"$n = {n}$  $\\theta_0 = {round(theta0, 4)}$")
     plt.xlim((-limit, limit))
@@ -89,7 +100,7 @@ def _plot_complex_circle(
     if show_result:
         _plot_complex_number(axes, result, "blue")
 
-    _configure_plot(axes, n, theta0)
+    _configure_plot(axes, n, theta0, show_result)
 
 
 def visualize(
